@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>USA Rental Application</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    .hidden { display: none; }
+    .container { max-width: 600px; margin: 0 auto; }
+    label { display: block; margin-top: 10px; }
+    input, textarea { width: 100%; padding: 8px; margin-top: 5px; }
+    button { margin-top: 15px; padding: 10px 20px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>USA Rental Property Application</h1>
+    <!-- Application Form Section -->
+    <div id="application-form">
+      <p>Please fill out the form below to apply for the rental property:</p>
+      <form id="rentalForm">
+        <label for="fullName">Full Name:</label>
+        <input type="text" id="fullName" name="fullName" required>
+        
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" name="email" required>
+        
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" name="phone" required>
+        
+        <label for="currentAddress">Current Address:</label>
+        <textarea id="currentAddress" name="currentAddress" rows="3" required></textarea>
+        
+        <label for="desiredRental">Desired Rental Property Details:</label>
+        <textarea id="desiredRental" name="desiredRental" rows="3" required></textarea>
+        
+        <button type="submit">Submit Application</button>
+      </form>
+    </div>
+
+    <!-- Payment Section (Initially Hidden) -->
+    <div id="payment-section" class="hidden">
+      <h2>Application Fee Payment</h2>
+      <p>
+        Your application fee is <strong>$100</strong>. This fee is refundable if the property does not meet your needs.
+        After paying, you will be contacted shortly.
+      </p>
+      <!-- PayPal Payment Button -->
+      <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+        <input type="hidden" name="cmd" value="_xclick">
+        <input type="hidden" name="business" value="Joycealuso5@gmail.com">
+        <input type="hidden" name="item_name" value="Rental Application Fee">
+        <input type="hidden" name="amount" value="100.00">
+        <input type="hidden" name="currency_code" value="USD">
+        <!-- Optional: add return and cancel_return URLs if you have them set up -->
+        <button type="submit">Pay $100 via PayPal</button>
+      </form>
+    </div>
+  </div>
+  
+  <script>
+    // Listen for the form submission.
+    document.getElementById('rentalForm').addEventListener('submit', function(e) {
+      e.preventDefault(); // Prevent the default form submission
+      
+      // Optionally: Process and store application data here (e.g., via AJAX)
+      
+      // Hide the application form and display the payment section
+      document.getElementById('application-form').classList.add('hidden');
+      document.getElementById('payment-section').classList.remove('hidden');
+    });
+  </script>
+</body>
+</html>
